@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 0;
+  background: #f2f4f7;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.payment-container {
+  background: #fff;
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  padding: 24px;
+}
+
+.step-header {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.secure {
+  font-size: 12px;
+  color: #999;
+}
+
+.amount-bar {
+  background: #e8f0fe;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.order-summary {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.order-summary div {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.order-summary .total {
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+details {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 16px;
+  margin-top: 12px;
+}
+
+summary {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin-bottom: 8px;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.note {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.note a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.form-group {
+  margin-top: 12px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1a73e8;
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.error-msg {
+  color: #d93025;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.pay-button {
+  margin-top: 20px;
+  background: #ffc400;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pay-button:hover {
+  background: #e6b800;
+}
