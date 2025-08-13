@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+<div class="payment-container">
+  <div class="step-header">
+    <div>Step 3 of 3</div>
+    <div class="secure">🔒 100% Secure</div>
+  </div>
+
+  <div class="amount-bar">
+    <div>Total Amount</div>
+    <div>₹1,010</div>
+  </div>
+
+  <div class="order-summary">
+    <div><strong>Order No:</strong> #ORD123456</div>
+    <div><strong>Item:</strong> Bluetooth Speaker</div>
+    <div><strong>Qty:</strong> 2</div>
+    <div><strong>Price:</strong> ₹505 x 2</div>
+    <div class="total">Total: ₹1,010</div>
+  </div>
+
+  <details open>
+    <summary>Saved Payment Options</summary>
+    <div class="form-group">
+      <label>Select a Saved Option</label>
+      <select>
+        <option value="">-- Choose Saved Method --</option>
+        <option>Visa ending in 1234</option>
+        <option>Mastercard ending in 5678</option>
+        <option>Paytm Wallet</option>
+        <option>PhonePe UPI</option>
+      </select>
+    </div>
+  </details>
+
+  <details>
+    <summary>UPI</summary>
+    <div class="form-group">
+      <label>Select UPI App</label>
+      <select>
+        <option value="">-- Choose UPI App --</option>
+        <option>Google Pay</option>
+        <option>PhonePe</option>
+        <option>Paytm</option>
+        <option>BHIM</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>UPI ID</label>
+      <input type="text" placeholder="example@upi"
+             pattern="^[\w.-]+@[\w]{3,}$"
+             title="Enter a valid UPI ID (e.g. name@bank)">
+    </div>
+  </details>
+
+  <details open>
+    <summary>Debit / ATM Cards</summary>
+    <div class="note">
+      Note: Please ensure your card can be used for online transactions. 
+      <a href="#">Learn More</a>
+    </div>
+
+    <div class="form-group">
+      <label>Card Number</label>
+      <input type="text" placeholder="XXXX XXXX XXXX XXXX" required
+             pattern="\d{4}[\s]?\d{4}[\s]?\d{4}[\s]?\d{4}"
+             title="Enter a valid 16-digit card number">
+      <div class="error-msg">Card number is required</div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Valid Thru</label>
+        <input type="text" placeholder="MM / YY" required
+               pattern="(0[1-9]|1[0-2])\/?([0-9]{2})"
+               title="Enter in MM/YY format (e.g. 08/25)">
+      </div>
+
+      <div class="form-group">
+        <label>CVV</label>
+        <input type="text" placeholder="CVV" required
+               pattern="\d{3}" maxlength="3"
+               title="3-digit CVV from the back of your card">
+      </div>
+    </div>
+
+    <button class="pay-button">Pay ₹1,010</button>
+  </details>
+</div>
+
+</body>
+</html>
