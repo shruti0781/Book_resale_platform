@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Resale Platform - Register</title>
+    <link rel="stylesheet" href="stylelogin.css">
+    
+</head>
+<body>
+
+<div class="container">
+    <h2>Book Resale Platform - Register</h2>
+    <form action="#" method="post">
+
+        <label>Full Name </label>
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="middle_name" placeholder="Middle Name">
+        <input type="text" name="last_name" placeholder="Last Name" required>
+
+        
+        <label>Date of Birth *</label>
+        <input type="date" name="dob" required>
+
+        
+        <label>Gender</label>
+        <div class="gender-options">
+            <label><input type="radio" name="gender" value="Male" required> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+            <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+
+        
+        <label>Institution / Organization</label>
+        <input type="text" name="institution" placeholder="Your college, school, or company">
+
+        
+        <label>Email Address *</label>
+        <input type="email" name="primary_email" placeholder="This will be used to sign in" required>
+
+
+        
+        <label>Mobile Number</label>
+        <input type="tel" name="mobile" placeholder="Phone Number" required>
+
+        
+        <label>Password </label>
+        <input type="password" name="password" required>
+
+        
+        <label>Re-type Password </label>
+        <input type="password" name="confirm_password" required>
+
+        <div class="terms">
+            <input type="checkbox" name="terms" required>
+            <label>I agree with the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</label>
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+</div>
+
+</body>
+</html>
