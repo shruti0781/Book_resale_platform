@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Book Resale</title>
+  <style>
+    :root{
+      --brand:#3B82F6;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --paper:#f9fafb;
+      --card:#ffffff;
+      --accent:#10b981;
+      --shadow:0 6px 18px rgba(0,0,0,.08);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:var(--paper);
+    }
+    a{color:var(--brand);text-decoration:none}
+    .hero{
+      position:relative;
+      min-height:320px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:#fff;
+      padding:48px 16px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35)),
+        url('https://shoppiko.com/image/BUSINESS/new-images/Book.jpg') center/cover no-repeat;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size:clamp(28px,5vw,44px);
+      letter-spacing:.3px;
+    }
+    .hero p{
+      margin:0;
+      max-width:780px;
+      font-size:clamp(14px,2.5vw,18px);
+      opacity:.95;
+    }
+
+    .container{
+      width:min(1200px,92%);
+      margin:auto;
+      padding:36px 0 60px;
+    }
+
+    .about{
+      background:var(--card);
+      padding:28px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      margin-top:-40px;
+    }
+    .about h2{
+      margin:0 0 12px;
+      font-size:clamp(22px,3.6vw,28px);
+    }
+    .about p{color:var(--muted); margin:0}
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:28px;
+    }
+    .stat{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+      text-align:center;
+    }
+    .stat h3{
+      margin:0;
+      font-size:28px;
+      color:var(--brand);
+    }
+    .stat p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .pillbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+    .pill{
+      background:#eef2ff;
+      color:#4338ca;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid #e0e7ff;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      margin-top:26px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+      height:100%;
+    }
+    @media (max-width:880px){ .grid-2{grid-template-columns:1fr} }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:12px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px dashed #d1d5db;
+      border-radius:10px;
+      font-size:13px;
+      color:#374151;
+      background:#f8fafc;
+    }
+
+    .timeline{
+      border-left:3px solid #e5e7eb;
+      padding-left:14px;
+      margin-top:10px;
+    }
+    .timeline .row{
+      margin:14px 0;
+      position:relative;
+    }
+    .timeline .row::before{
+      content:"";
+      position:absolute;
+      left:-22px; top:6px;
+      width:12px; height:12px;
+      background:var(--accent);
+      border-radius:50%;
+      box-shadow:0 0 0 3px #d1fae5;
+    }
+    .row h4{margin:0 0 4px; font-size:16px}
+    .row p{margin:0; color:var(--muted); font-size:14px}
+
+    .founders{
+      margin-top:34px;
+    }
+    .founders h2{
+      margin:0 0 8px;
+      font-size:clamp(22px,3.6vw,28px);
+    }
+    .founder-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:18px;
+      margin-top:14px;
+    }
+    .founder{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      text-align:center;
+    }
+    .founder img{
+      width:100%;
+      max-width:200px;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      border-radius:12px;
+      display:block;
+      margin:4px auto 10px;
+    }
+    .founder h3{margin:0 0 4px}
+    .founder p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .cta{
+      margin-top:36px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+    }
+    .btn{
+      padding:12px 18px;
+      border-radius:12px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow:var(--shadow);
+    }
+    .btn.primary{background:var(--brand);color:#fff}
+    .btn.ghost{background:#eef2ff;color:#1e3a8a}
+
+    footer{
+      margin-top:48px;
+      padding:18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero" role="banner" aria-label="ReBook About">
+    <div>
+      <h1>About Resale books</h1>
+      <p>India’s friendly marketplace for buying & selling  books—textbooks, novels, exam preps, and more.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="about" aria-labelledby="our-story">
+      <h2 id="About Us">About Us</h2>
+      <p>
+        "Founded with the mission to make reading affordable and sustainable, Resale Books is India’s trusted marketplace for buying and selling pre-loved books. From academic textbooks to timeless novels, we connect readers and students with quality books at a fraction of the original cost.
+
+We believe that every book deserves a second life. By re-homing books, we not only make knowledge accessible but also help reduce paper waste and protect the environment. Our platform is built to make the process simple—list your book in minutes, connect with genuine buyers, and enjoy hassle-free pickup and delivery services.A community marketplace where students,teachers and readers resell their old books-making education cheaper and greener."
+      </p>
+     
+    </section>
+    <section aria-labelledby="impact" style="margin-top:18px">
+      <h2 id="impact" style="margin:0 0 10px">Our Impact</h2>
+      <div class="stats" role="list">
+        <article class="stat" role="listitem">
+          <h3>350K+</h3>
+          <p>Books re-homed</p>
+        </article>
+        <article class="stat" role="listitem">
+          <h3>120K+</h3>
+          <p>Registered readers & sellers</p>
+        </article>
+        <article class="stat" role="listitem">
+          <h3>620+</h3>
+          <p>Campuses & cities covered</p>
+        </article>
+      
+        <article class="stat" role="listitem">
+          <h3>4.8/5</h3>
+          <p>Average seller rating</p>
+        </article>
+      </div>
+    </section>
+    <section class="grid-2" aria-label="How it works and trust & safety">
+      <div class="card">
+        <h3 style="margin:0 0 8px">How ReBook Works</h3>
+        <ol style="margin:8px 0 0; padding-left:18px">
+          <li>Create Your Free Account.</li>
+          <li>List Your Book For Sale.</li>
+          <li>We provide doorstep pickup & delivery.</li>
+          <li>Seller gets paid after safe delivery—simple.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px">Trust & Safety</h3>
+        <p style="margin:0 0 10px; color:var(--muted)">
+          We keep transactions safe and transparent so you can trade with confidence.
+        </p>
+        <div class="badges" role="list">
+          <span class="badge" role="listitem">Verified Profiles</span>
+          <span class="badge" role="listitem">Secure Payments</span>
+          <span class="badge" role="listitem">Buyer Protection</span>
+          <span class="badge" role="listitem">Quality Checks</span>
+        </div>
+      </div>
+    </section>
+<section class="founders" aria-labelledby="founders">
+  <h2 id="founders">Founders</h2>
+  <div class="founder-grid" role="list">
+    <article class="founder" role="listitem">
+      <img src="founder1.jpg" alt="Portrait of founder 1">
+      <h3>Shruti Gupta</h3>
+      <p>Co-founder & CEO</p>
+      <p>Visionary behind ReBook, driving innovation and building sustainable reading communities.</p>
+    </article>
+    <article class="founder" role="listitem">
+      <img src="founder2.jpg" alt="Portrait of founder 2">
+      <h3>Tanu Jain</h3>
+      <p>Co-founder & Technical Lead</p>
+      <p>Leads the platform's technical development, ensuring a smooth and secure user experience.</p>
+    </article>
+    <article class="founder" role="listitem">
+      <img src="founder3.jpg" alt="Portrait of founder 3">
+      <h3>Sonam</h3>
+      <p>Co-founder & Operations Head</p>
+      <p>Manages logistics, partnerships, and ensures timely delivery of books across India.</p>
+    </article>
+    <article class="founder" role="listitem">
+  <img src="founder4.jpg" alt="Portrait of founder 4">
+  <h3>Pranchal </h3>
+  <p>Marketing & Community Lead</p>
+  <p>Handles social media and builds strong connections with readers and sellers.</p>
+</article>
+
+  </div>
+</section>
+    <section class="cta" aria-label="Call to action">
+      <button class="btn primary">Start Selling</button>
+      <button class="btn ghost">Browse Books</button>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> ReBook • Read more, waste less.
+  </footer>
+
+
+</body>
+</html>
