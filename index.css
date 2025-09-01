@@ -197,54 +197,84 @@ body {
 
 /* Articles */
 .articles {
-  padding: 50px 30px;
+  padding: 60px 30px;
 }
 
 .articles h2 {
   font-size: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   text-align: center;
+  font-family: 'Playfair Display', serif;
 }
 
 .article-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 25px;
+  justify-content: center;
 }
 
-.article-list article {
-  display: flex;
-  gap: 20px;
+
+.article-card {
   background: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
+  width: 320px;
+  transition: transform 0.3s;
 }
 
-.article-list article img {
-  width: 200px;
-  height: 150px;
+.article-card:hover {
+  transform: translateY(-8px);
+}
+
+.article-card img {
+  width: 100%;
+  height: 200px;
   object-fit: cover;
 }
 
-.article-list article div {
+.article-card h3 {
   padding: 15px;
+  font-size: 1.2rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.article-card p {
+  padding: 0 15px 20px;
+  font-size: 0.95rem;
+  color: #666;
 }
 
 /* Newsletter */
 .newsletter {
-  background: #333;
+  background: #222;
   color: #fff;
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
+}
+.newsletter h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
 }
 
+.newsletter p {
+  margin-bottom: 20px;
+}
+
+.newsletter-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .newsletter input {
   padding: 12px;
-  border-radius: 5px;
+  border-radius: 25px;
   border: none;
-  width: 250px;
-  margin-right: 10px;
+  width: 280px;
+  outline: none;
+  
 }
 
 .newsletter button {
@@ -264,15 +294,29 @@ body {
 /* Footer */
 footer {
   text-align: center;
-  padding: 20px;
-  background: #222;
-  color: #ccc;
+  padding: 25px;
+  background: #111;
+  color: #aaa;
   font-size: 0.85rem;
 }
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ff4b2b;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
 
 /* Responsive */
 @media(max-width: 900px) {
   .cards { flex-direction: column; align-items: center; }
-  .article-list article { flex-direction: column; }
-  .article-list article img { width: 100%; height: 200px; }
+  .article-list  { flex-direction: column; align-items: center; }
 }
+
