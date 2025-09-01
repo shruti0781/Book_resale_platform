@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Page</title>
+<link rel="icon" href="https://uyc.thecenterforsalesstrategy.com/hubfs/21%20Books%20on%20Our%20Shelves%20for%20Personal%20and%20Professional%20Development.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -11,7 +14,9 @@
         padding: 0;
         background-color: rgb(189, 187, 187);
     }
-    .header {
+
+    /* HEADER */
+    header {
         position: relative;
         width: 100%;
         text-align: center;
@@ -19,8 +24,7 @@
         border-radius: 8px;
         overflow: hidden;
     }
-
-    .header::before {
+    header::before {
         content: "";
         position: absolute;
         top: 0; left: 0;
@@ -29,32 +33,31 @@
         background-image: url("https://cdn.prod.website-files.com/62600b5ecee854eef1235963/65ddea6a5c1aacbfa9485d0e_images%20for%20self%20care%20email-03.jpg");
         background-size: cover;
         background-position: center;
-        filter: brightness(65%); /* Darkens image only */
+        filter: brightness(65%);
     }
-
-    .header::after {
+    header::after {
         content: "";
         position: absolute;
         top: 0; left: 0;
         width: 100%;
         height: 100%;
-        box-shadow: inset 0 0 50px rgba(0,0,0,0.6); /* Inner shadow effect */
+        box-shadow: inset 0 0 50px rgba(0,0,0,0.6);
     }
-
     .header-content {
         position: relative;
         padding: 90px 20px;
         z-index: 1;
     }
-
-    .header h1 {
+    header h1 {
         margin: 0;
         font-size: 2rem;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     }
-    .header p {
+    header p {
         font-size: 1rem;
         margin-top: 10px;
         opacity: 0.9;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     }
 
     /* CONTACT BOXES */
@@ -93,10 +96,14 @@
         text-decoration: none;
         font-weight: bold;
     }
-     .number{
+    .number a {
         color: #2b1470;
         text-decoration: none;
         font-weight: bold;
+    }
+    .number a:hover {
+        text-decoration: underline;
+        color: #1d0f55;
     }
     .contact-btn {
         display: inline-block;
@@ -106,40 +113,52 @@
         border-radius: 5px;
         text-decoration: none;
         font-weight: bold;
+        transition: background-color 0.3s ease;
     }
     .contact-btn:hover {
         background-color: #424092;
     }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+        .header-content {
+            padding: 50px 15px;
+        }
+        header h1 {
+            font-size: 1.6rem;
+        }
+    }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<div class="header">
+<header>
     <div class="header-content">
         <h1>Get in touch</h1>
         <p>Want to get in touch? We'd love to hear from you. Here's how you can reach us.</p>
     </div>
-</div>
+</header>
 
-<div class="contact-container">
-    <div class="contact-box">
-        <i class="fas fa-phone"></i>
-        <h3>Talk to Sales</h3>
-        <p>Interested in our software? Just pick up the phone to chat with a member of our sales team.</p>
-        <div class="number">
-
-            <a href="tel:+18578295060">+1 857 829 5060</a><br>
-            <a href="#">View all global numbers</a>
+<main>
+    <section class="contact-container">
+        <div class="contact-box">
+            <i class="fas fa-phone"></i>
+            <h3>Talk to Sales</h3>
+            <p>Interested in our software? Just pick up the phone to chat with a member of our sales team.</p>
+            <div class="number">
+                <a href="tel:+18578295060">+1 857 829 5060</a><br>
+                <a href="#">View all global numbers</a>
+            </div>
         </div>
-    </div>
-    <div class="contact-box">
-        <i class="fas fa-comments"></i>
-        <h3>Contact Customer Support</h3>
-        <p>Sometimes you need a little help from your friends. Don’t worry… we’re here for you.</p>
-        <a class="contact-btn" href="#">Contact Support</a>
-    </div>
-</div>
+
+        <div class="contact-box">
+            <i class="fas fa-comments"></i>
+            <h3>Contact Customer Support</h3>
+            <p>Sometimes you need a little help from your friends. Don’t worry… we’re here for you.</p>
+            <a class="contact-btn" href="#">Contact Support</a>
+        </div>
+    </section>
+</main>    
 
 </body>
 </html>
