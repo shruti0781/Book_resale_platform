@@ -9,21 +9,18 @@
 </head>
 <body>
   <header class="header">
-    <div class="logo">DAILY TIMES</div>
-<div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <input type="text" placeholder="enter the book name" width="200px" height="100px">
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">about us</a></li>
-        <li><a href="contact_us.html">contact us</a></li>
-        <li><a href="#">login</a></li>
+    <div class="logo">📚DAILY TIMES</div>
+    <nav class="nav">
+  <ul>
+        <li><a href="#"class="active">Home</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="contact_us.html">Contact us</a></li>
+        <li><a href="#">Login</a></li>
       </ul>
     </nav>
+    <div class="search-bar">
+  <input type="text" placeholder="Search for books...">
+</div>
   </header>
 
   <section class="hero">
@@ -36,7 +33,7 @@
 
   <!-- Featured Stories -->
   <section class="featured">
-    <h2>Popular Categories</h2>
+    <h2>📖Popular Categories</h2>
     <div class="cards">
       <article class="card">
         <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2021/03/essential-web-design-books-featured-image.jpg" alt="Politics">
@@ -85,42 +82,44 @@
   <section class="articles">
     <h2>Latest Articles</h2>
     <div class="article-list">
-      <article>
+      <article class="article-card">
         <img src="https://images.pexels.com/photos/261796/pexels-photo-261796.jpeg" alt="Economy">
-        <div>
           <h3>Global Economy Sees Unexpected Growth</h3>
           <p>Despite ongoing crises, some countries report stronger economic activity than expected.</p>
-        </div>
       </article>
-      <article>
+      <article class="article-card">
         <img src="https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg" alt="Science">
-        <div>
           <h3>SpaceX Prepares Next Mars Mission</h3>
           <p>The company announces ambitious plans to colonize Mars within the next decade.</p>
-        </div>
       </article>
-      <article>
+      <article class="article-card">
         <img src="https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg" alt="Environment">
-        <div>
           <h3>Climate Summit Aims to Cut Carbon Emissions</h3>
           <p>World leaders gather to implement new strategies for reducing global emissions.</p>
-        </div>
       </article>
     </div>
   </section>
 
   <!-- Newsletter -->
   <section class="newsletter">
-    <h2>Subscribe to Daily Times</h2>
+    <h2>📬Subscribe to Daily Times</h2>
     <p>Get breaking news delivered directly to your inbox.</p>
+    <div class="newsletter-box">
     <input type="email" placeholder="Enter your email">
-    <button>Subscribe</button>
+    <button class="btn-primary">Subscribe</button>
+    </div>
   </section>
 
   <footer>
+    <div class="footer-links">
+  <a href="#">Privacy Policy</a> | 
+  <a href="#">Terms of Service</a> | 
+  <a href="contact_us.html">Contact</a>
+</div>
     <p>&copy; 2025 Daily Times. All Rights Reserved.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+
