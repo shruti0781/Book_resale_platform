@@ -20,4 +20,5 @@ This project follows the **Scrum model of Agile development**, with features imp
 ## 🧑‍💻 Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript.
+- https://shruti0781.github.io/Book_resale_platform/
 ---
