@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details</title>
+</head>
+<body>
+  <a href="index.html">⬅ Back to Home</a>
+  <div id="bookDetail" style="margin-top:20px;"></div>
+
+  <script>
+    
+    let books = [
+      {id:1, title:"C Programming", author:"Dennis Ritchie", stock:2, desc:"Classic book on C programming."},
+      {id:2, title:"Data Structures", author:"Mark Weiss", stock:1, desc:"Detailed explanation of DS concepts."},
+      {id:3, title:"Operating System", author:"Galvin", stock:0, desc:"Standard OS concepts book."}
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const bookId = parseInt(params.get("id"));
+
+    
+    let book = books.find(b => b.id === bookId);
+
+    if(book){
+      document.getElementById("bookDetail").innerHTML = `
+        <h1>${book.title}</h1>
+        <p><b>Author:</b> ${book.author}</p>
+        <p><b>Stock:</b> ${book.stock > 0 ? book.stock : "Out of Stock"}</p>
+        <p><b>Description:</b> ${book.desc}</p>
+        <button ${book.stock === 0 ? "disabled" : ""}>
+          ${book.stock > 0 ? "Buy Now" : "Not Available"}
+        </button>
+      `;
+    } else {
+      document.getElementById("bookDetail").innerHTML = "<p>❌ Book not found!</p>";
+    }
+  </script>
+</body>
+</html>
