@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Your Book</title>
+  <link rel="stylesheet" href="sell_book.css" />
+  <link rel="icon" href="https://uyc.thecenterforsalesstrategy.com/hubfs/21%20Books%20on%20Our%20Shelves%20for%20Personal%20and%20Professional%20Development.png" type="image/x-icon">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">📚 <strong>DAILY TIMES</strong></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="About us.html">About us</a>
+      <a href="contact_us.html">Contact us</a>
+      <a href="resale_login.html">Login</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for books...">
+    </div>
+  </header>
+
+  <!-- Sell Book Form -->
+  <form>
+    <div>
+      <label for="title">Book Title</label>
+      <input type="text" id="title" name="title" placeholder="Enter book title" required>
+    </div>
+
+    <div>
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author" placeholder="Author name" required>
+    </div>
+
+    <div>
+      <label for="category">Category</label>
+      <select id="category" name="category" required>
+        <option value="Textbooks">Textbooks</option>
+        <option value="Educational">Educational</option>
+        <option value="Novels">Novels & Literature</option>
+        <option value="Arts">Arts & Humanities</option>
+        <option value="Reference">Reference</option>
+        <option value="Self-help">Student Life & Self-help</option>
+        <option value="Business">Business & Management</option>
+        <option value="Science">Science & Technology</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="condition">Condition</label>
+      <select id="condition" name="condition" required>
+        <option value="New">New</option>
+        <option value="Used - Like New">Used - Like New</option>
+        <option value="Used - Good">Used - Good</option>
+        <option value="Used - Acceptable">Used - Acceptable</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="price">Price ($)</label>
+      <input type="number" id="price" name="price" placeholder="e.g. 15.99" required>
+    </div>
+
+    <div>
+      <label for="image">Upload Book Image</label>
+      <input type="file" id="image" name="image" accept="image/*">
+    </div>
+
+    <div>
+      <label for="description">Book Description</label>
+      <textarea id="description" name="description" rows="5" placeholder="Tell buyers about this book..." required></textarea>
+    </div>
+
+    <button type="submit">📤 Submit Your Listing</button>
+  </form>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="#">Contact</a>
+    <p>&copy; 2025 Daily Times. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
