@@ -59,6 +59,15 @@
         <button type="submit">Create Account</button>
     </form>
 </div>
+    <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      console.log("Login successful");
+
+      window.location.href = "index.html"; 
+    });
+  </script>
 
 </body>
 </html>
+
