@@ -95,6 +95,15 @@
     <button class="pay-button">Pay ₹1,010</button>
   </details>
 </div>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const item = urlParams.get("item") || "Unknown Item";
+  const price = urlParams.get("price") || "0";
+  document.getElementById("order-item").textContent = item;
+  document.getElementById("order-price").textContent = price;
+  document.getElementById("order-total").textContent = price;
+  document.getElementById("pay-btn").textContent = `Pay ₹${price}`;
+</script>
 
 </body>
 </html>
