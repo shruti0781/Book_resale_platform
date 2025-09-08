@@ -13,10 +13,6 @@
     <div class="secure">🔒 100% Secure</div>
   </div>
 
-  <div class="amount-bar">
-    <div>Total Amount</div>
-    <div>₹1,010</div>
-  </div>
 
   <div class="order-summary">
   <div><strong>Order No:</strong> #ORD123456</div>
@@ -95,17 +91,26 @@
       </div>
     </div>
 
-    <button class="pay-button">Pay ₹1,010</button>
   </details>
 </div>
 <script>
   const urlParams = new URLSearchParams(window.location.search);
   const item = urlParams.get("item") || "Unknown Item";
-  const price = urlParams.get("price") || "0";
+  const price = parseInt(urlParams.get("price")) || 0;
+
   document.getElementById("order-item").textContent = item;
   document.getElementById("order-price").textContent = price;
   document.getElementById("order-total").textContent = price;
   document.getElementById("pay-btn").textContent = `Pay ₹${price}`;
+
+
+// Update top amount bar
+document.querySelector(".amount-bar div:last-child").textContent = `₹${price}`;
+
+// Update bottom debit/ATM pay button
+document.querySelector(".amount-bar div:last-child").textContent = `₹${price}`;
+document.querySelectorAll(".pay-button")[1].textContent = `Pay ₹${price}`;
+
 </script>
 
 </body>
