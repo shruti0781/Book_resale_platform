@@ -19,12 +19,15 @@
   </div>
 
   <div class="order-summary">
-    <div><strong>Order No:</strong> #ORD123456</div>
-    <div><strong>Item:</strong> Mathematics</div>
-    <div><strong>Qty:</strong> 1</div>
-    <div><strong>Price:</strong> ₹200</div>
-    <div class="total">Total: ₹200</div>
-  </div>
+  <div><strong>Order No:</strong> #ORD123456</div>
+  <div><strong>Item:</strong> <span id="order-item">--</span></div>
+  <div><strong>Qty:</strong> 1</div>
+  <div><strong>Price:</strong> ₹<span id="order-price">--</span></div>
+  <div class="total">Total: ₹<span id="order-total">--</span></div>
+</div>
+
+<button class="pay-button" id="pay-btn">Pay ₹0</button>
+
 
   <details open>
     <summary>Saved Payment Options</summary>
