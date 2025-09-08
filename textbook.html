@@ -4,15 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Textbook Catalog</title>
-  <link rel="stylesheet" href="index.css"> 
+  <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="catalog.css">
+  <style>
+    /* catalog.css */
+/* Increase main page heading */
+/* Style price text inside cards */
+.card p {
+    font-size: 18px;       /* Bigger font size */
+    font-weight: 500;      /* Slightly bold */
+    color: #333;           /* Darker text color */
+    margin: 5px 0 10px 0;  /* Spacing above and below */
+    text-align: center;    /* Center text inside card */
+}
+
+main h1 {
+    font-size: 36px;       /* Larger main heading */
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Increase card titles */
+.card h3 {
+    font-size: 20px;       /* Larger card title */
+    font-weight: 600;
+    margin: 15px 0 10px 0;
+}
+
+/* Style all buttons inside cards */
+.card button {
+    background-color: #007BFF; /* Bright blue */
+    color: #fff;               /* White text */
+    border: none;              /* Remove default border */
+    padding: 10px 20px;        /* Comfortable padding */
+    border-radius: 5px;        /* Rounded corners */
+    cursor: pointer;           /* Pointer on hover */
+    display: block;            /* Allows centering */
+    margin: 10px auto 0 auto;  /* Reduced top margin to bring button closer to price */
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.card button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05);    /* Slight zoom on hover */
+}
+
+  </style>
 </head>
 <body>
   <header class="header">
-    <div class="logo">📚DAILY TIMES</div>
-    <nav class="nav">
+    <div class="logo">📚 DAILY TIMES</div>
+    <nav>
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="About us.html">About us</a></li>
         <li><a href="contact_us.html">Contact us</a></li>
         <li><a href="resale_login.html">Login</a></li>
@@ -25,29 +71,53 @@
 
   <main>
     <h1 style="text-align:center; margin:20px 0;">Textbook Catalog</h1>
-    
-    <section class="catalog">
-      <div class="book-card">
-        <img src="https://m.media-amazon.com/images/I/81r5Cm0nVeL.jpg" alt="Math Book">
+
+    <section class="cards">
+      <!-- First row of textbooks -->
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/81r5Cm0nVeL.jpg" alt="Mathematics 101 textbook cover">
         <h3>Mathematics 101</h3>
-        <p>200</p>
+        <p>₹200</p>
         <button>Buy Now</button>
-      </div>
+      </article>
 
-      <div class="book-card">
-        <img src="https://ncert.nic.in/textbook/pdf/leph2cc.jpg" alt="Physics Book">
+      <article class="card">
+        <img src="https://ncert.nic.in/textbook/pdf/leph2cc.jpg" alt="Physics Basics textbook cover">
         <h3>Physics Basics</h3>
-        <p>250</p>
+        <p>₹250</p>
         <button>Buy Now</button>
-      </div>
+      </article>
 
-      <div class="book-card">
-        <img src="https://ncert.nic.in/textbook/pdf/lehs1cc.jpg" alt="History Book">
+      <article class="card">
+        <img src="https://ncert.nic.in/textbook/pdf/lehs1cc.jpg" alt="World History textbook cover">
         <h3>World History</h3>
-        <p>180</p>
+        <p>₹180</p>
         <button>Buy Now</button>
-      </div>
+      </article>
+
+      <!-- Second row of textbooks -->
+      <article class="card">
+        <img src="https://booksandyou.in/cdn/shop/files/SocialScienceContemporaryIndiaIITextbookinGeographyforClassX_1.webp?v=1716011980" alt="Geography textbook cover">
+        <h3>Geography</h3>
+        <p>₹200</p>
+        <button>Buy Now</button>
+      </article>
+
+      <article class="card">
+        <img src="https://ncert.nic.in/textbook/pdf/leps1cc.jpg" alt="Political Science textbook cover">
+        <h3>Political Science</h3>
+        <p>₹250</p>
+        <button>Buy Now</button>
+      </article>
+
+      <article class="card">
+        <img src="https://www.jainbookmart.com/cdn/shop/products/0644.jpg?v=1676041962" alt="Hindi textbook cover">
+        <h3>Hindi</h3>
+        <p>₹180</p>
+        <button>Buy Now</button>
+      </article>
     </section>
   </main>
+
 </body>
 </html>
