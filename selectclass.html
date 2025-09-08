@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Class - Textbooks</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #222;
+      margin-bottom: 40px;
+      text-align: center;
+      font-weight: bold;
+      position: relative;
+    }
+
+    h1::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: #6c63ff;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+      border-radius: 2px;
+    }
+
+    .class-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .class-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      text-align: center;
+      padding-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .class-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .class-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #f1f1f1;
+    }
+
+    .class-card h3 {
+      font-size: 20px;
+      margin: 15px 0 10px;
+      color: #333;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #6c63ff, #3f3d9b);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #5a52d4, #2f2c77);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1> Select Your Class</h1>
+  
+  <div class="class-container">
+    <div class="class-card">
+      <img src="https://img.freepik.com/premium-vector/letter-9-education-logo-template-education-logotype-concept-with-alphabet-9-vector-element_752325-1150.jpg" alt="Class 9">
+      <h3>Class 9</h3>
+      <a href="class9.html" class="btn">View Books</a>
+    </div>
+    
+    <div class="class-card">
+      <img src="https://i.pinimg.com/564x/ea/8c/5e/ea8c5e25bf9af69ec3a37c1fbbd006c7.jpg" alt="Class 10">
+      <h3>Class 10</h3>
+      <a href="class10.html" class="btn">View Books</a>
+    </div>
+    
+    <div class="class-card">
+      <img src="https://i.pinimg.com/736x/f8/34/79/f834796d22dbb447b336ea581b81c239.jpg" alt="Class 11">
+      <h3>Class 11</h3>
+      <a href="class11.html" class="btn">View Books</a>
+    </div>
+    
+    <div class="class-card">
+      <img src="https://png.pngtree.com/png-vector/20191010/ourmid/pngtree-12-years-anniversary-celebrations-vector-template-design-illustration-png-image_1817289.jpg" alt="Class 12">
+      <h3>Class 12</h3>
+      <a href="class12.html" class="btn">View Books</a>
+    </div>
+  </div>
+
+</body>
+</html>
+
