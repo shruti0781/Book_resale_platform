@@ -1,0 +1,252 @@
+/* Reset & base */
+* {
+  /* border:2px solid black; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  background: #f9f6f1;
+  color: #333;
+}
+.hamburger {
+  display: none; /* hidden on large screens */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+}
+
+/* Responsive: Show hamburger, hide nav on small screens */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .header nav {
+    display: none; /* hide nav by default on small screens */
+    position: absolute;
+    top: 60px; /* below header */
+    right: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 20;
+  }
+
+  .header nav.active {
+    display: block;
+  }
+
+  .header nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header nav ul li {
+    list-style: none;
+  }
+}
+/* Header */
+.header {
+  background: #fff;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-family: 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.header nav ul li a:hover {
+  color: #ff4b2b;
+}
+.find {
+  background-color: rgb(85, 81, 81);
+  width: 300px;
+  height: 40px; 
+  font-weight: bold;
+  font-size: medium;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer; 
+  color: white; 
+  transition: background-color 0.3s;
+}
+
+.find:hover {
+  background-color: #eedddd; 
+  color: gray;
+}
+/* Hero */
+.hero {
+  position: relative;
+  text-align: center;
+}
+
+.hero img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 70px;           /* distance from the bottom */
+  left: 50%;              /* center horizontally */
+  transform: translateX(-50%); /* shift left by half its width */
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  max-width: 500px;
+  text-align: center;
+  border-radius: 8px;     /* optional: rounded corners */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* optional: subtle shadow */
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 1rem;
+}
+
+/* section { 
+    padding: 50px 30px; 
+}  */
+section h2 { 
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 30px; 
+        color: #222; 
+    }
+/* Cards Layout */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+.find, .buy {
+  background: #333;
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.find:hover, .buy:hover {
+  background: #ff4b2b;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #eee;
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ffb347;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+}
