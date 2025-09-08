@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Role - Book Resale Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, rgba(57, 58, 60, 0.741), rgba(33, 35, 37, 0.752)),
+                  url("https://wallpapercave.com/wp/wp9166985.jpg") no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #000000c1;
+      border-radius: 20px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+      width: 300px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 12px 30px rgba(237, 234, 234, 0.796);
+    }
+
+    .animated-img {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+
+    .icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: #c93f09e1;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #fffbfb;
+    }
+
+    p {
+      font-size: 14px;
+      color: #f7f1f1;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #f130059c, #f4410596);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #f50404e0, #fa4402e8);
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Buyer Card -->
+    <div class="card" onclick="window.location.href='buyer-home.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/7564/7564852.png" alt="Buyer Animation" class="animated-img">
+      <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+      <h2>Buyer</h2>
+      <p>Explore bookshops, find affordable used books, and even get donations from other students.</p>
+      <a href="buyer-home.html" class="btn">Continue as Buyer</a>
+    </div>
+
+    <!-- Seller Card -->
+    <div class="card" onclick="window.location.href='seller-home.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/10003/10003970.png" alt="Seller Animation" class="animated-img">
+      <div class="icon"><i class="fas fa-book"></i></div>
+      <h2>Seller</h2>
+      <p>Upload your old books, set prices, and make them available to buyers or donate them easily.</p>
+      <a href="seller-home.html" class="btn">Continue as Seller</a>
+    </div>
+  </div>
+</body>
+</html>
