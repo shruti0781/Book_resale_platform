@@ -17,10 +17,12 @@
         <input type="text" name="first_name" placeholder="First Name" required>
         <input type="text" name="middle_name" placeholder="Middle Name">
         <input type="text" name="last_name" placeholder="Last Name" required>
+        <div id="nameError" class="error"></div>
 
         
         <label>Date of Birth *</label>
         <input type="date" name="dob" required>
+        <div id="dobError" class="error"></div>
 
         
         <label>Gender</label>
@@ -29,6 +31,7 @@
             <label><input type="radio" name="gender" value="Female"> Female</label>
             <label><input type="radio" name="gender" value="Other"> Other</label>
         </div>
+        <div id="genderError" class="error"></div>
 
         
         <label>Institution / Organization</label>
@@ -37,24 +40,29 @@
         
         <label>Email Address *</label>
         <input type="email" name="primary_email" placeholder="This will be used to sign in" required>
+        <div id="emailError" class="error"></div>
 
 
         
         <label>Mobile Number</label>
         <input type="tel" name="mobile" placeholder="Phone Number" required>
+        <div id="mobileError" class="error"></div>
 
         
         <label>Password </label>
         <input type="password" name="password" required>
+        <div id="passwordError" class="error"></div>
 
         
         <label>Re-type Password </label>
         <input type="password" name="confirm_password" required>
+        <div id="confirmError" class="error"></div>
 
         <div class="terms">
             <input type="checkbox" name="terms" required>
             <label>I agree with the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</label>
         </div>
+        <div id="termsError" class="error"></div>
 
         <a href="welcomepage.html">
    <button type="button">Create Account</button>
@@ -62,17 +70,89 @@
 
     </form>
 </div>
+    
     <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      console.log("Login successful");
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-      window.location.href = "index.html"; 
+  // Clear previous errors
+  document.querySelectorAll(".error").forEach(el => el.textContent = "");
+  const firstName = document.getElementById("first_name").value.trim();
+  const lastName = document.getElementById("last_name").value.trim();
+  const dob = document.getElementById("dob").value;
+  const gender = document.querySelector('input[name="gender"]:checked');
+  const email = document.getElementById("email").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirm_password").value;
+  const terms = document.getElementById("terms").checked;
+
+  let isValid = true;
+  if (firstName === "" || lastName === "") {
+    document.getElementById("nameError").textContent = "Please enter your full name.";
+    isValid = false;
+  }
+  if (dob === "") {
+    document.getElementById("dobError").textContent = "Please select your date of birth.";
+    isValid = false;
+  } else {
+    const dobDate = new Date(dob);
+    const today = new Date();
+    if (dobDate > today) {
+      document.getElementById("dobError").textContent = "Date of birth cannot be in the future.";
+      isValid = false;
+    }
+  }
+  if (!gender) {
+    document.getElementById("genderError").textContent = "Please select your gender.";
+    isValid = false;
+  }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email === "") {
+    document.getElementById("emailError").textContent = "Email is required.";
+    isValid = false;
+  } else if (!emailPattern.test(email)) {
+    document.getElementById("emailError").textContent = "Please enter a valid email address.";
+    isValid = false;
+  }
+  if (mobile === "") {
+    document.getElementById("mobileError").textContent = "Mobile number is required.";
+    isValid = false;
+  } else if (!/^\d{10}$/.test(mobile)) {
+    document.getElementById("mobileError").textContent = "Mobile number must be exactly 10 digits.";
+    isValid = false;
+  }
+  if (password === "") {
+    document.getElementById("passwordError").textContent = "Password is required.";
+    isValid = false;
+  } else if (password.length < 6) {
+    document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+    isValid = false;
+  }
+  if (confirmPassword === "") {
+    document.getElementById("confirmError").textContent = "Please re-type your password.";
+    isValid = false;
+  } else if (password !== confirmPassword) {
+    document.getElementById("confirmError").textContent = "Passwords do not match.";
+    isValid = false;
+  }
+  if (!terms) {
+    document.getElementById("termsError").textContent = "You must agree to the Terms & Conditions.";
+    isValid = false;
+  }
+  if (isValid) {
+    alert("✅ Registration successful!");
+    window.location.href = "index.html";
+  } else {
+    alert("⚠ Please fix the highlighted errors before submitting.");
+  }
+});
     });
   </script>
 
 </body>
 </html>
+
 
 
 
