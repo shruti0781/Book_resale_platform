@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Resale Platform - Register</title>
     <link rel="stylesheet" href="stylelogin.css">
-    
 </head>
 <body>
 
 <div class="container">
     <h2>Book Resale Platform - Register</h2>
+
     <form id="registerForm" action="welcomepage.html" method="get">
 
-        <label>Full Name </label>
-        <input type="text" name="first_name"id="first_name" placeholder="First Name" required>
-        <input type="text" name="middle_name"id="middle_name"  placeholder="Middle Name">
-        <input type="text" name="last_name"id="last_name" placeholder="Last Name" required>
+        <!-- Full Name -->
+        <label>Full Name</label>
+        <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+        <input type="text" name="middle_name" id="middle_name" placeholder="Middle Name">
+        <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
         <div id="nameError" class="error"></div>
 
-        
+        <!-- Date of Birth -->
         <label>Date of Birth *</label>
-        <input type="date" name="dob" id="dob"required>
+        <input type="date" name="dob" id="dob" required>
         <div id="dobError" class="error"></div>
 
-        
+        <!-- Gender -->
         <label>Gender</label>
         <div class="gender-options">
             <label><input type="radio" name="gender" value="Male" required> Male</label>
@@ -33,125 +34,141 @@
         </div>
         <div id="genderError" class="error"></div>
 
-        
+        <!-- Institution -->
         <label>Institution / Organization</label>
-        <input type="text" name="institution" id="institution"placeholder="Your college, school, or company">
+        <input type="text" name="institution" id="institution" placeholder="Your college, school, or company">
 
-        
+        <!-- Email -->
         <label>Email Address *</label>
-        <input type="email" name="primary_email" id="email"placeholder="This will be used to sign in" required>
+        <input type="email" name="primary_email" id="email" placeholder="This will be used to sign in" required>
         <div id="emailError" class="error"></div>
 
-
-        
+        <!-- Mobile -->
         <label>Mobile Number</label>
-        <input type="tel" name="mobile"  id="mobile"placeholder="Phone Number" required>
+        <input type="tel" name="mobile" id="mobile" placeholder="Phone Number" required>
         <div id="mobileError" class="error"></div>
 
-        
-        <label>Password </label>
-        <input type="password" name="password"id="password"  required>
+        <!-- Password -->
+        <label>Password</label>
+        <input type="password" name="password" id="password" required>
         <div id="passwordError" class="error"></div>
 
-        
-        <label>Re-type Password </label>
-        <input type="password" name="confirm_password"id="confirm_password" required>
+        <!-- Confirm Password -->
+        <label>Re-type Password</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
         <div id="confirmError" class="error"></div>
 
+        <!-- Terms -->
         <div class="terms">
-            <input type="checkbox" name="terms"id="terms" required>
+            <input type="checkbox" name="terms" id="terms" required>
             <label>I agree with the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</label>
         </div>
         <div id="termsError" class="error"></div>
-   <button type="submit">Create Account</button>
 
+        <!-- Submit -->
+        <button type="submit">Create Account</button>
 
     </form>
 </div>
-    
-    <script>
-    document.getElementById("registerForm").addEventListener("submit", function (e) {
-  e.preventDefault();
 
-  // Clear previous errors
-  document.querySelectorAll(".error").forEach(el => el.textContent = "");
-  const firstName = document.getElementById("first_name").value.trim();
-  const lastName = document.getElementById("last_name").value.trim();
-  const dob = document.getElementById("dob").value;
-  const gender = document.querySelector('input[name="gender"]:checked');
-  const email = document.getElementById("email").value.trim();
-  const mobile = document.getElementById("mobile").value.trim();
-  const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirm_password").value;
-  const terms = document.getElementById("terms").checked;
+<!-- Inline Script -->
+<script>
+document.getElementById("registerForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  let isValid = true;
-  if (firstName === "" || lastName === "") {
-    document.getElementById("nameError").textContent = "Please enter your full name.";
-    isValid = false;
-  }
-  if (dob === "") {
-    document.getElementById("dobError").textContent = "Please select your date of birth.";
-    isValid = false;
-  } else {
-    const dobDate = new Date(dob);
-    const today = new Date();
-    if (dobDate > today) {
-      document.getElementById("dobError").textContent = "Date of birth cannot be in the future.";
-      isValid = false;
+    // Clear previous errors
+    document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+    // Get form values
+    const firstName = document.getElementById("first_name").value.trim();
+    const lastName = document.getElementById("last_name").value.trim();
+    const dob = document.getElementById("dob").value;
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const email = document.getElementById("email").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm_password").value;
+    const terms = document.getElementById("terms").checked;
+
+    let isValid = true;
+
+    // Name validation
+    if (firstName === "" || lastName === "") {
+        document.getElementById("nameError").textContent = "Please enter your full name.";
+        isValid = false;
     }
-  }
-  if (!gender) {
-    document.getElementById("genderError").textContent = "Please select your gender.";
-    isValid = false;
-  }
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (email === "") {
-    document.getElementById("emailError").textContent = "Email is required.";
-    isValid = false;
-  } else if (!emailPattern.test(email)) {
-    document.getElementById("emailError").textContent = "Please enter a valid email address.";
-    isValid = false;
-  }
-  if (mobile === "") {
-    document.getElementById("mobileError").textContent = "Mobile number is required.";
-    isValid = false;
-  } else if (!/^\d{10}$/.test(mobile)) {
-    document.getElementById("mobileError").textContent = "Mobile number must be exactly 10 digits.";
-    isValid = false;
-  }
-  if (password === "") {
-    document.getElementById("passwordError").textContent = "Password is required.";
-    isValid = false;
-  } else if (password.length < 6) {
-    document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
-    isValid = false;
-  }
-  if (confirmPassword === "") {
-    document.getElementById("confirmError").textContent = "Please re-type your password.";
-    isValid = false;
-  } else if (password !== confirmPassword) {
-    document.getElementById("confirmError").textContent = "Passwords do not match.";
-    isValid = false;
-  }
-  if (!terms) {
-    document.getElementById("termsError").textContent = "You must agree to the Terms & Conditions.";
-    isValid = false;
-  }
-  if (isValid) {
-    alert("✅ Registration successful!");
-    window.location.href = "index.html";
-  } else {
-    alert("⚠ Please fix the highlighted errors before submitting.");
-  }
+
+    // DOB validation
+    if (dob === "") {
+        document.getElementById("dobError").textContent = "Please select your date of birth.";
+        isValid = false;
+    } else {
+        const dobDate = new Date(dob);
+        const today = new Date();
+        if (dobDate > today) {
+            document.getElementById("dobError").textContent = "Date of birth cannot be in the future.";
+            isValid = false;
+        }
+    }
+
+    // Gender validation
+    if (!gender) {
+        document.getElementById("genderError").textContent = "Please select your gender.";
+        isValid = false;
+    }
+
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "") {
+        document.getElementById("emailError").textContent = "Email is required.";
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Please enter a valid email address.";
+        isValid = false;
+    }
+
+    // Mobile validation
+    if (mobile === "") {
+        document.getElementById("mobileError").textContent = "Mobile number is required.";
+        isValid = false;
+    } else if (!/^\d{10}$/.test(mobile)) {
+        document.getElementById("mobileError").textContent = "Mobile number must be exactly 10 digits.";
+        isValid = false;
+    }
+
+    // Password validation
+    if (password === "") {
+        document.getElementById("passwordError").textContent = "Password is required.";
+        isValid = false;
+    } else if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+        isValid = false;
+    }
+
+    // Confirm password validation
+    if (confirmPassword === "") {
+        document.getElementById("confirmError").textContent = "Please re-type your password.";
+        isValid = false;
+    } else if (password !== confirmPassword) {
+        document.getElementById("confirmError").textContent = "Passwords do not match.";
+        isValid = false;
+    }
+
+    // Terms validation
+    if (!terms) {
+        document.getElementById("termsError").textContent = "You must agree to the Terms & Conditions.";
+        isValid = false;
+    }
+
+    // Final check
+    if (isValid) {
+        alert("✅ Registration successful!");
+        window.location.href = "index.html"; // Redirect after success
+    } else {
+        alert("⚠ Please fix the highlighted errors before submitting.");
+    }
 });
-  </script>
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
