@@ -318,6 +318,33 @@ body.dark-mode .hero img {
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
     }
+.search-bar {
+  position: relative;
+  width: 300px;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f2f2f2;
+}
 
     .card button:hover {
       transform: scale(1.05);
@@ -395,3 +422,70 @@ body.dark-mode .hero img {
         align-items: center;
       }
     }
+/* Header layout */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #f5f5f5;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Center Search Bar */
+.search-bar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  width: 60%;
+  max-width: 450px;
+  padding: 8px 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+  background-color: #fafafa;
+}
+
+.search-bar input:focus {
+  border-color: #4b8df8;
+  box-shadow: 0 0 10px rgba(75, 141, 248, 0.4);
+  background-color: #fff;
+}
+
+/* Navigation */
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav ul li a:hover,
+.nav ul li a.active {
+  color: #4b8df8;
+}
+
+/* Toggle alignment */
+.toggle-container {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
