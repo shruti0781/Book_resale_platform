@@ -482,10 +482,53 @@ body.dark-mode .hero img {
   color: #4b8df8;
 }
 
-/* Toggle alignment */
+ /* Toggle alignment */ 
 .toggle-container {
   margin-left: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
+} 
+/* 🔍 Suggestions dropdown */
+.suggestions {
+  position: absolute;
+  top: 45px; /* just below the search bar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 450px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: none; /* hidden by default */
+}
+
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  font-size: 16px;
+}
+
+.suggestion-item:hover {
+  background-color: #c4bfbf;
+}
+
+/* 🌙 Dark mode styling for suggestions */
+body.dark-mode .suggestions {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+body.dark-mode .suggestion-item {
+   color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+body.dark-mode .suggestion-item:hover {
+  background-color: #444;
 }
