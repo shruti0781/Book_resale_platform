@@ -1,5 +1,5 @@
 // ⚙️ Replace this key with your real OpenAI key (for demo only)
-const API_KEY = "sk-your-real-api-key-here";  // ⚠️ Do NOT share it with anyone
+const API_KEY = "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";  // ⚠️ Do NOT share it with anyone
 
 // 🔹 Function to call OpenAI API
 async function getAIResponse(prompt) {
