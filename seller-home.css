@@ -20,6 +20,33 @@ body {
   height: 20px;
   cursor: pointer;
 }
+.search-section {
+  text-align: center;
+  padding: 40px;
+  background: #f4f4f4;
+}
+
+.search-section input {
+  width: 250px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.search-section button {
+  padding: 10px 15px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-section button:hover {
+  background-color: #5a52d4;
+}
+
 
 .hamburger span {
   display: block;
