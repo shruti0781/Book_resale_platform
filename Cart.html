@@ -1,263 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🛒 Cart - Daily Times</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cart</title>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f9fafb;
+      background-color: #faf8f5;
       margin: 0;
       padding: 0;
-      color: #333;
     }
 
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 1.2rem 0;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.8rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    main.container {
-      max-width: 900px;
-      margin: 2rem auto 4rem auto;
-      padding: 0 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .container {
+      width: 80%;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     h2 {
-      color: #003366;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+      transition: 0.2s;
+    }
+
+    .cart-item:hover {
+      background: #f9f9f9;
+    }
+
+    .cart-item div {
+      flex: 1;
       text-align: center;
     }
 
-    a.back-link {
-      display: inline-block;
-      margin: 1rem 0;
-      color: #003366;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    a.back-link:hover {
-      text-decoration: underline;
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1.5rem;
-    }
-
-    th, td {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-
-    th {
-      background-color: #eaf1ff;
-      color: #003366;
-    }
-
-    .total-row td {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #00234d;
-    }
-
-    button {
-      background-color: #007bff;
+    .remove-btn {
+      background: #ff4d4d;
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 15px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: 0.2s;
     }
 
-    button:hover {
-      background-color: #0056b3;
+    .remove-btn:hover {
+      background: #ff1a1a;
     }
 
-    #empty-message {
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .empty {
       text-align: center;
       font-size: 1.2rem;
-      color: #555;
-      margin: 2rem 0;
-    }
-
-    #clear-cart-btn {
-      background-color: #dc3545;
-    }
-    #clear-cart-btn:hover {
-      background-color: #a71d2a;
-    }
-
-    #place-order-btn {
-      background-color: #28a745;
-      margin-left: 10px;
-    }
-    #place-order-btn:hover {
-      background-color: #1e7e34;
-    }
-
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: #ffcc00;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+      color: #888;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <header>🛒 Your Cart - Daily Times</header>
 
-  <main class="container">
-    <a href="buyer_home.html" class="back-link">&larr; Continue Shopping</a>
-    <h2>Books in Your Cart</h2>
-
-    <table id="cart-table">
-      <thead>
-        <tr>
-          <th>Book Title</th>
-          <th>Price (₹)</th>
-          <th>Quantity</th>
-          <th>Subtotal (₹)</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="cart-items-body"></tbody>
-      <tfoot>
-        <tr class="total-row">
-          <td colspan="3">Total</td>
-          <td id="cart-total">₹0</td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
-
-    <div id="empty-message" style="display:none;">Your cart is empty.</div>
-    <div style="text-align:center; margin-bottom:20px;">
-      <button id="clear-cart-btn" style="display:none;">Clear Cart</button>
-      <button id="place-order-btn" style="display:none;">Proceed to Payment</button>
-    </div>
-  </main>
-
-  <footer>
-    <div>
-      <a href="#">Privacy Policy</a> | 
-      <a href="#">Terms of Service</a> | 
-      <a href="contact_us.html">Contact</a>
-    </div>
-    <p>&copy; 2025 Daily Times. All Rights Reserved.</p>
-  </footer>
+  <div class="container">
+    <h2>🛍️ My Cart</h2>
+    <div id="cartItems"></div>
+    <div id="total" class="total"></div>
+  </div>
 
   <script>
-    const cartItemsBody = document.getElementById('cart-items-body');
-    const cartTotalElem = document.getElementById('cart-total');
-    const emptyMessage = document.getElementById('empty-message');
-    const clearCartBtn = document.getElementById('clear-cart-btn');
-    const placeOrderBtn = document.getElementById('place-order-btn');
+    // Example items in localStorage (for demo)
+    // Uncomment this block once to test
+    /*
+    const demoCart = [
+      { name: "Class 9 Books", price: 400, quantity: 1, image: "https://via.placeholder.com/60" },
+      { name: "Class 10 Books", price: 450, quantity: 2, image: "https://via.placeholder.com/60" },
+      { name: "Science Notes", price: 200, quantity: 1, image: "https://via.placeholder.com/60" }
+    ];
+    localStorage.setItem("cart", JSON.stringify(demoCart));
+    */
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById("cartItems");
+    const totalContainer = document.getElementById("total");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     function renderCart() {
-      cartItemsBody.innerHTML = '';
+      cartContainer.innerHTML = "";
+      let totalPrice = 0;
+
       if (cart.length === 0) {
-        emptyMessage.style.display = 'block';
-        clearCartBtn.style.display = 'none';
-        placeOrderBtn.style.display = 'none';
-        document.getElementById('cart-table').style.display = 'none';
+        cartContainer.innerHTML = `<p class="empty">Your cart is empty 🛒</p>`;
+        totalContainer.textContent = "";
         return;
       }
 
-      emptyMessage.style.display = 'none';
-      clearCartBtn.style.display = 'inline-block';
-      placeOrderBtn.style.display = 'inline-block';
-      document.getElementById('cart-table').style.display = 'table';
-
-      let total = 0;
       cart.forEach((item, index) => {
-        const quantity = item.quantity || 1;
-        const price = parseFloat(item.price);
-        const subtotal = price * quantity;
-        total += subtotal;
+        const subtotal = item.price * item.quantity;
+        totalPrice += subtotal;
 
-        const tr = document.createElement('tr');
-
-        const titleTd = document.createElement('td');
-        titleTd.textContent = item.title;
-        tr.appendChild(titleTd);
-
-        const priceTd = document.createElement('td');
-        priceTd.textContent = price.toFixed(2);
-        tr.appendChild(priceTd);
-
-        const quantityTd = document.createElement('td');
-        quantityTd.textContent = quantity;
-        tr.appendChild(quantityTd);
-
-        const subtotalTd = document.createElement('td');
-        subtotalTd.textContent = subtotal.toFixed(2);
-        tr.appendChild(subtotalTd);
-
-        const actionTd = document.createElement('td');
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'Remove';
-        removeBtn.style.backgroundColor = '#dc3545';
-        removeBtn.addEventListener('click', () => removeItem(index));
-        actionTd.appendChild(removeBtn);
-        tr.appendChild(actionTd);
-
-        cartItemsBody.appendChild(tr);
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+          <div><img src="${item.image}" alt="${item.name}"></div>
+          <div><strong>${item.name}</strong></div>
+          <div>₹${item.price}</div>
+          <div>Qty: ${item.quantity}</div>
+          <div>Subtotal: ₹${subtotal}</div>
+          <div><button class="remove-btn" onclick="removeItem(${index})">Remove</button></div>
+        `;
+        cartContainer.appendChild(div);
       });
 
-      cartTotalElem.textContent = '₹' + total.toFixed(2);
+      totalContainer.textContent = `Total Amount: ₹${totalPrice}`;
     }
 
     function removeItem(index) {
       cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart));
       renderCart();
     }
 
-    clearCartBtn.addEventListener('click', () => {
-      cart = [];
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCart();
-    });
-
-    placeOrderBtn.addEventListener('click', () => {
-      if (cart.length === 0) {
-        alert('Your cart is empty! Please add books before proceeding.');
-        return;
-      }
-      alert('Proceeding to payment page...');
-      window.location.href = 'payment.html';
-    });
-
     renderCart();
   </script>
+
 </body>
 </html>
-
