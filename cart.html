@@ -4,57 +4,207 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Cart</title>
-  <link rel="stylesheet" href="buyer.css">
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    h1 { text-align: center; }
-    .cart-container { max-width: 600px; margin: auto; }
-    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ddd; }
-    .cart-item button { background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
-    .cart-item button:hover { background-color: #e60000; }
-    .empty { text-align: center; color: #888; margin-top: 20px; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #faf8f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+      transition: background 0.2s;
+    }
+
+    .cart-item:hover {
+      background: #f9f9f9;
+    }
+
+    .cart-item div {
+      flex: 1;
+      text-align: center;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .remove-btn {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .remove-btn:hover {
+      background: #ff1a1a;
+    }
+
+    .quantity-input {
+      width: 50px;
+      padding: 4px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .empty {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #888;
+      margin-top: 30px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .btn {
+      background: #10b981;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background: #059669;
+    }
+
+    .clear-btn {
+      background: #e11d48;
+    }
+
+    .clear-btn:hover {
+      background: #be123c;
+    }
   </style>
 </head>
 <body>
-  <h1>🛒 My Cart</h1>
-  <div class="cart-container" id="cartContainer"></div>
-  <p id="totalCount"></p>
+
+  <div class="container">
+    <h2>🛍️ My Cart</h2>
+    <div id="cartItems"></div>
+    <div id="total" class="total"></div>
+    <div class="btn-container">
+      <button class="btn clear-btn" onclick="clearCart()">Clear Cart</button>
+      <button class="btn" onclick="placeOrder()">Place Order</button>
+    </div>
+  </div>
 
   <script>
-    // Get cart items from localStorage
+    const cartContainer = document.getElementById("cartItems");
+    const totalContainer = document.getElementById("total");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const cartContainer = document.getElementById("cartContainer");
-    const totalCount = document.getElementById("totalCount");
 
     function renderCart() {
       cartContainer.innerHTML = "";
-      if(cart.length === 0) {
-        cartContainer.innerHTML = '<p class="empty">Your cart is empty 😔</p>';
-        totalCount.textContent = "";
+      let totalPrice = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = `<p class="empty">Your cart is empty 🛒</p>`;
+        totalContainer.textContent = "";
         return;
       }
 
       cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        totalPrice += subtotal;
+
         const div = document.createElement("div");
-        div.className = "cart-item";
+        div.classList.add("cart-item");
         div.innerHTML = `
-          <span>${item}</span>
-          <button onclick="removeFromCart(${index})">Remove</button>
+          <div><img src="${item.image}" alt="${item.name}"></div>
+          <div><strong>${item.name}</strong></div>
+          <div>₹${item.price}</div>
+          <div>
+            <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+          </div>
+          <div>₹${subtotal}</div>
+          <div><button class="remove-btn" onclick="removeItem(${index})">Remove</button></div>
         `;
         cartContainer.appendChild(div);
       });
 
-      totalCount.textContent = `Total Items: ${cart.length}`;
+      totalContainer.textContent = `Total Amount: ₹${totalPrice}`;
     }
 
-    function removeFromCart(index) {
+    function removeItem(index) {
       cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(cart));
       renderCart();
     }
 
+    function updateQuantity(index, newQty) {
+      cart[index].quantity = parseInt(newQty);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      localStorage.removeItem("cart");
+      renderCart();
+    }
+
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      const existingOrders = JSON.parse(localStorage.getItem("tradeveilOrders")) || [];
+      const newOrders = cart.map(item => ({ ...item, date: new Date() }));
+      localStorage.setItem("tradeveilOrders", JSON.stringify([...existingOrders, ...newOrders]));
+      alert("✅ Order placed successfully!");
+      clearCart();
+    }
+
     renderCart();
   </script>
+
 </body>
 </html>
