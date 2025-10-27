@@ -39,3 +39,48 @@ function buyBook(id){
     searchBook();
   }
 }
+// new
+// === AI Description Generator ===
+const generateBtn = document.getElementById("generateDescBtn");
+const bookTitleInput = document.getElementById("bookTitleInput");
+const bookDescOutput = document.getElementById("bookDescOutput");
+
+generateBtn.addEventListener("click", async () => {
+  const title = bookTitleInput.value.trim();
+  if (!title) {
+    alert("Please enter a book title!");
+    return;
+  }
+
+  // 🔑 Replace this with your own API key
+  const API_KEY = "YOUR_OPENAI_API_KEY";
+
+  bookDescOutput.value = "✨ Generating AI description... Please wait...";
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "user",
+            content: `Write a short, attractive description for a book titled "${title}".`
+          }
+        ],
+        max_tokens: 120
+      })
+    });
+
+    const data = await response.json();
+    bookDescOutput.value = data.choices[0].message.content.trim();
+  } catch (error) {
+    console.error(error);
+    bookDescOutput.value = "⚠️ Error generating description.";
+  }
+});
+// new
