@@ -76,8 +76,18 @@
 document.getElementById("registerForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
+    // Helper: show error neatly
+    function showError(id, message) {
+        const el = document.getElementById(id);
+        el.textContent = message;
+        el.style.display = "block";
+    }
+
     // Clear previous errors
-    document.querySelectorAll(".error").forEach(el => el.textContent = "");
+    document.querySelectorAll(".error").forEach(el => {
+        el.textContent = "";
+        el.style.display = "none";
+    });
 
     // Get form values
     const firstName = document.getElementById("first_name").value.trim();
@@ -91,84 +101,79 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
     const terms = document.getElementById("terms").checked;
 
     let isValid = true;
-function showError(id, message) {
-  const el = document.getElementById(id);
-  el.textContent = message;
-  el.style.display = "block";
-}
 
     // Name validation
     if (firstName === "" || lastName === "") {
-        document.getElementById("nameError").textContent = "Please enter your full name.";
+        showError("nameError", "Please enter your full name.");
         isValid = false;
     }
 
     // DOB validation
     if (dob === "") {
-        document.getElementById("dobError").textContent = "Please select your date of birth.";
+        showError("dobError", "Please select your date of birth.");
         isValid = false;
     } else {
         const dobDate = new Date(dob);
         const today = new Date();
         if (dobDate > today) {
-            document.getElementById("dobError").textContent = "Date of birth cannot be in the future.";
+            showError("dobError", "Date of birth cannot be in the future.");
             isValid = false;
         }
     }
 
     // Gender validation
     if (!gender) {
-        document.getElementById("genderError").textContent = "Please select your gender.";
+        showError("genderError", "Please select your gender.");
         isValid = false;
     }
 
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email === "") {
-        document.getElementById("emailError").textContent = "Email is required.";
+        showError("emailError", "Email is required.");
         isValid = false;
     } else if (!emailPattern.test(email)) {
-        document.getElementById("emailError").textContent = "Please enter a valid email address.";
+        showError("emailError", "Please enter a valid email address.");
         isValid = false;
     }
 
     // Mobile validation
     if (mobile === "") {
-        document.getElementById("mobileError").textContent = "Mobile number is required.";
+        showError("mobileError", "Mobile number is required.");
         isValid = false;
     } else if (!/^\d{10}$/.test(mobile)) {
-        document.getElementById("mobileError").textContent = "Mobile number must be exactly 10 digits.";
+        showError("mobileError", "Mobile number must be exactly 10 digits.");
         isValid = false;
     }
 
     // Password validation
     if (password === "") {
-        document.getElementById("passwordError").textContent = "Password is required.";
+        showError("passwordError", "Password is required.");
         isValid = false;
     } else if (password.length < 6) {
-        document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+        showError("passwordError", "Password must be at least 6 characters.");
         isValid = false;
     }
 
     // Confirm password validation
     if (confirmPassword === "") {
-        document.getElementById("confirmError").textContent = "Please re-type your password.";
+        showError("confirmError", "Please re-type your password.");
         isValid = false;
     } else if (password !== confirmPassword) {
-        document.getElementById("confirmError").textContent = "Passwords do not match.";
+        showError("confirmError", "Passwords do not match.");
         isValid = false;
     }
 
     // Terms validation
     if (!terms) {
-        document.getElementById("termsError").textContent = "You must agree to the Terms & Conditions.";
+        showError("termsError", "You must agree to the Terms & Conditions.");
         isValid = false;
     }
 
     // Final check
     if (isValid) {
         alert("✅ Registration successful!");
-        window.location.href = "welcomepage.html"; // Redirect after success
+        window.location.href = "welcomepage.html";
     } else {
         alert("⚠ Please fix the highlighted errors before submitting.");
     }
@@ -177,5 +182,6 @@ function showError(id, message) {
 
 </body>
 </html>
+
 
 
