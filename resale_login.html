@@ -91,6 +91,11 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
     const terms = document.getElementById("terms").checked;
 
     let isValid = true;
+function showError(id, message) {
+  const el = document.getElementById(id);
+  el.textContent = message;
+  el.style.display = "block";
+}
 
     // Name validation
     if (firstName === "" || lastName === "") {
@@ -172,4 +177,5 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
 
 </body>
 </html>
+
 
