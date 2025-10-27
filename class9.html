@@ -179,48 +179,62 @@ function addToCart(name, price, image) {
     <p>&copy; 2025 Daily Times. All Rights Reserved.</p>
   </footer>
 
-  <script>
-    const books = [
-      { title: "Mathematics NCERT Class 9", author: "NCERT", condition: "New", price: 200, image: "https://ncert.nic.in/textbook/pdf/iemh1cc.jpg" },
-      { title: "Science NCERT Class 9", author: "NCERT", condition: "New", price: 250, image: "https://m.media-amazon.com/images/I/71ap3TuYKRL._UF894,1000_QL80_.jpg" },
-      { title: "History – India & Contemporary World", author: "NCERT", condition: "New", price: 180, image: "https://ncert.nic.in/textbook/pdf/ihss3cc.jpg" },
-      { title: "Geography – Contemporary India", author: "NCERT", condition: "New", price: 190, image: "https://ncert.nic.in/textbook/pdf/iess1cc.jpg" },
-      { title: "English – Beehive", author: "NCERT", condition: "New", price: 160, image: "https://m.media-amazon.com/images/I/917x2UlgoHL.jpg" },
-      { title: "Civics – Democratic Politics", author: "NCERT", condition: "New", price: 170, image: "https://ncert.nic.in/textbook/pdf/iess4cc.jpg" }
-    ];
+ <script>
+  const books = [
+    { title: "Mathematics NCERT Class 9", author: "NCERT", condition: "New", price: 200, image: "https://ncert.nic.in/textbook/pdf/iemh1cc.jpg" },
+    { title: "Science NCERT Class 9", author: "NCERT", condition: "New", price: 250, image: "https://m.media-amazon.com/images/I/71ap3TuYKRL._UF894,1000_QL80_.jpg" },
+    { title: "History – India & Contemporary World", author: "NCERT", condition: "New", price: 180, image: "https://ncert.nic.in/textbook/pdf/ihss3cc.jpg" },
+    { title: "Geography – Contemporary India", author: "NCERT", condition: "New", price: 190, image: "https://ncert.nic.in/textbook/pdf/iess1cc.jpg" },
+    { title: "English – Beehive", author: "NCERT", condition: "New", price: 160, image: "https://m.media-amazon.com/images/I/917x2UlgoHL.jpg" },
+    { title: "Civics – Democratic Politics", author: "NCERT", condition: "New", price: 170, image: "https://ncert.nic.in/textbook/pdf/iess4cc.jpg" }
+  ];
 
-    const container = document.getElementById("bookList");
+  const container = document.getElementById("bookList");
 
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      document.getElementById("cartCount").textContent = cart.length;
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cartCount").textContent = cart.length;
+  }
+
+  // ✅ Final Correct Function
+  function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        name: name,
+        price: price,
+        image: image,
+        quantity: 1
+      });
     }
 
-    function addToCart(book) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(book);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      updateCartCount();
-      alert(`${book.title} added to cart!`);
-    }
-
-    // Generate cards
-    books.forEach(book => {
-      const div = document.createElement("div");
-      div.className = "book-card";
-      div.innerHTML = `
-        <img src="${book.image}" alt="${book.title}">
-        <h3>${book.title}</h3>
-        <p><b>Author:</b> ${book.author}</p>
-        <p><b>Condition:</b> ${book.condition}</p>
-        <p><b>Price:</b> ₹${book.price}</p>
-       <button onclick="addToCart('Mathematics NCERT Class 9', 200, 'math.jpg')">Add to Cart</button>
-
-      `;
-      container.appendChild(div);
-    });
-
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
-  </script>
+    alert(`${name} added to cart!`);
+  }
+
+  // ✅ Generate cards dynamically
+  books.forEach(book => {
+    const div = document.createElement("div");
+    div.className = "book-card";
+    div.innerHTML = `
+      <img src="${book.image}" alt="${book.title}">
+      <h3>${book.title}</h3>
+      <p><b>Author:</b> ${book.author}</p>
+      <p><b>Condition:</b> ${book.condition}</p>
+      <p><b>Price:</b> ₹${book.price}</p>
+      <button onclick="addToCart('${book.title}', ${book.price}, '${book.image}')">Add to Cart</button>
+    `;
+    container.appendChild(div);
+  });
+
+  updateCartCount();
+</script>
+
 </body>
 </html>
