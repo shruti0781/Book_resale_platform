@@ -33,38 +33,61 @@
   </section>
 
   <!-- Classes Section -->
-  <section class="classes">
-    <h2>🎓 Classes</h2>
-    <div class="cards">
-      <article class="card">
-        <img src="https://img.freepik.com/premium-vector/letter-9-education-logo-template-education-logotype-concept-with-alphabet-9-vector-element_752325-1150.jpg" alt="Class 9">
-        <h3>Class 9</h3>
-        <p>Browse Class 9 textbooks and study material.</p>
-        <a href="class9.html"><button class="find">View Books</button></a>
-      </article>
+<!-- Classes Section -->
+<section class="classes">
+  <h2>🎓 Classes</h2>
+  <div class="cards">
+    <article class="card">
+      <img src="https://img.freepik.com/premium-vector/letter-9-education-logo-template-education-logotype-concept-with-alphabet-9-vector-element_752325-1150.jpg" alt="Class 9">
+      <h3>Class 9</h3>
+      <p>Browse Class 9 textbooks and study material.</p>
+      <a href="class9.html"><button class="find">View Books</button></a>
+      <button class="add-to-cart" data-book="Class 9 Books">Add to Cart</button>
+    </article>
 
-      <article class="card">
-        <img src="https://i.pinimg.com/564x/ea/8c/5e/ea8c5e25bf9af69ec3a37c1fbbd006c7.jpg" alt="Class 10">
-        <h3>Class 10</h3>
-        <p>All essential Class 10 NCERT and guides.</p>
-        <a href="class10.html"><button class="find">View Books</button></a>
-      </article>
+    <article class="card">
+      <img src="https://i.pinimg.com/564x/ea/8c/5e/ea8c5e25bf9af69ec3a37c1fbbd006c7.jpg" alt="Class 10">
+      <h3>Class 10</h3>
+      <p>All essential Class 10 NCERT and guides.</p>
+      <a href="class10.html"><button class="find">View Books</button></a>
+      <button class="add-to-cart" data-book="Class 10 Books">Add to Cart</button>
+    </article>
 
-      <article class="card">
-        <img src="https://i.pinimg.com/736x/f8/34/79/f834796d22dbb447b336ea581b81c239.jpg" alt="Class 11">
-        <h3>Class 11</h3>
-        <p>Reference & core subjects for Class 11.</p>
-        <a href="class11.html"><button class="find">View Books</button></a>
-      </article>
+    <article class="card">
+      <img src="https://i.pinimg.com/736x/f8/34/79/f834796d22dbb447b336ea581b81c239.jpg" alt="Class 11">
+      <h3>Class 11</h3>
+      <p>Reference & core subjects for Class 11.</p>
+      <a href="class11.html"><button class="find">View Books</button></a>
+      <button class="add-to-cart" data-book="Class 11 Books">Add to Cart</button>
+    </article>
 
-      <article class="card">
-        <img src="https://png.pngtree.com/png-vector/20191010/ourmid/pngtree-12-years-anniversary-celebrations-vector-template-design-illustration-png-image_1817289.jpg" alt="Class 12">
-        <h3>Class 12</h3>
-        <p>Latest Class 12 syllabus books and exam prep.</p>
-        <a href="class12.html"><button class="find">View Books</button></a>
-      </article>
-    </div>
-  </section>
+    <article class="card">
+      <img src="https://png.pngtree.com/png-vector/20191010/ourmid/pngtree-12-years-anniversary-celebrations-vector-template-design-illustration-png-image_1817289.jpg" alt="Class 12">
+      <h3>Class 12</h3>
+      <p>Latest Class 12 syllabus books and exam prep.</p>
+      <a href="class12.html"><button class="find">View Books</button></a>
+      <button class="add-to-cart" data-book="Class 12 Books">Add to Cart</button>
+    </article>
+  </div>
+</section>
+
+<script>
+  const buyerName = localStorage.getItem("buyerName") || "Guest";
+  document.getElementById("buyerName").textContent = buyerName;
+
+  // Add to Cart Functionality
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", () => {
+      const bookName = button.getAttribute("data-book");
+      cart.push(bookName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${bookName} added to cart!`);
+    });
+  });
+</script>
+
 
   <!-- Popular Categories -->
   <section class="featured">
