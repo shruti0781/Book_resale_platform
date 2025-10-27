@@ -63,17 +63,31 @@ nav a:hover {
   color: #007bff;
 }
 
-.search-bar input {
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: 0.3s ease;
+.search-section {
+  text-align: center;
+  padding: 40px;
+  background: #f4f4f4;
 }
 
-.search-bar input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+.search-section input {
+  width: 250px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.search-section button {
+  padding: 10px 15px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-section button:hover {
+  background-color: #5a52d4;
 }
 
 /* HERO SECTION */
