@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>home</title>
-  <link rel="icon" href="https://uyc.thecenterforsalesstrategy.com/hubfs/21%20Books%20on%20Our%20Shelves%20for%20Personal%20and%20Professional%20Development.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="icon" href="https://uyc.thecenterforsalesstrategy.com/hubfs/21%20Books%20on%20Our%20Shelves%20for%20Personal%20and%20Professional%20Development.png" type="image/x-icon" />
   <link rel="stylesheet" href="seller-home.css">
 </head>
+
 <body>
   <header class="header">
     <div class="logo">📚DAILY TIMES</div>
@@ -18,28 +19,32 @@
         <li><a href="resale_login.html">Login</a></li>
       </ul>
     </nav>
-    <div class="search-bar">
-       <input type="text" id="searchBox" placeholder="Search for a book..." onkeyup="searchBook()">
+
+    <div class="toggle-container">
+      <span class="toggle-label">🌙 Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
     </div>
   </header>
 
   <section class="hero">
     <img src="https://shoppiko.com/image/BUSINESS/new-images/Book.jpg" alt="Newspaper Hero Image">
     <div class="hero-text">
-      <h1>Sell Your Books Easily</h1>
+      <h1 class="hero-title">Sell Your Books Easily</h1>
       <a href="sell_book.html"><button class="find">Start Selling</button></a>
     </div>
   </section>
 
-  <!-- Nearby Stores -->
   <section class="featured">
     <h2>Our Store</h2>
     <div class="cards">
       <article class="card">
         <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="Bookstore 1">
         <h3>City Bookstore</h3>
-        <p> Wide range of academic and fiction books.</p>
-        <button onclick="window.location.href='class9.html'">View Store</button>
+        <p>Wide range of academic and fiction books.</p>
+        <button onclick="window.location.href='store1.html'">View Store</button>
       </article>
 
       <article class="card">
@@ -64,25 +69,45 @@
       </article>
     </div>
   </section>
- 
+
   <section class="newsletter">
     <h2>📬 Subscribe to Daily Times</h2>
     <p>Get breaking news delivered directly to your inbox.</p>
     <div class="newsletter-box">
-      <input type="email" placeholder="Enter your email">
+      <input type="email" placeholder="Enter your email" />
       <button class="btn-primary">Subscribe</button>
     </div>
   </section>
 
   <footer>
     <div class="footer-links">
-      <a href="#">Privacy Policy</a> | 
-      <a href="#">Terms of Service</a> | 
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
       <a href="contact_us.html">Contact</a>
     </div>
     <p>&copy; 2025 Daily Times. All Rights Reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const toggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+
+    // Check stored preference
+    if (localStorage.getItem("dark-mode") === "enabled") {
+      body.classList.add("dark-mode");
+      toggle.checked = true;
+    }
+
+    // Listen for toggle
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        body.classList.add("dark-mode");
+        localStorage.setItem("dark-mode", "enabled");
+      } else {
+        body.classList.remove("dark-mode");
+        localStorage.setItem("dark-mode", "disabled");
+      }
+    });
+  </script>
 </body>
 </html>
