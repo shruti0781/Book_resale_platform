@@ -114,13 +114,8 @@
         localStorage.setItem("dark-mode", "disabled");
       }
     });
-    //   const bookSearch = document.getElementById("bookSearch");
-
-  // Example book data (you can replace this with real book names)
-  // 📚 Book search system
   const bookSearch = document.getElementById("bookSearch");
 
-  // Example book list (add actual titles from class9.html)
   const books = [
     "Mathematics Class 9",
     "Science Class 9",
@@ -131,41 +126,54 @@
     "Computer Applications"
   ];
 
-  // Create suggestion box
+  // Create suggestion box and append below input
   const suggestionBox = document.createElement("div");
   suggestionBox.classList.add("suggestions");
+  bookSearch.parentNode.style.position = "relative"; // ensure positioning works
   bookSearch.parentNode.appendChild(suggestionBox);
 
   // Show suggestions when typing
-  bookSearch.addEventListener("input", function() {
-    const input = this.value.toLowerCase();
+  bookSearch.addEventListener("input", function () {
+    const input = this.value.toLowerCase().trim();
     suggestionBox.innerHTML = "";
 
     if (input) {
-      const filtered = books.filter(book => book.toLowerCase().includes(input));
+      const filtered = books.filter(book =>
+        book.toLowerCase().includes(input)
+      );
 
-      filtered.forEach(book => {
-        const div = document.createElement("div");
-        div.textContent = book;
-        div.classList.add("suggestion-item");
+      if (filtered.length > 0) {
+        suggestionBox.style.display = "block"; // show dropdown
 
-        // When user clicks a suggestion
-        div.addEventListener("click", () => {
-          bookSearch.value = book;
-          suggestionBox.innerHTML = "";
-          window.location.href = `class9.html?search=${encodeURIComponent(book)}`;
+        filtered.forEach(book => {
+          const div = document.createElement("div");
+          div.textContent = book;
+          div.classList.add("suggestion-item");
+
+          div.addEventListener("click", () => {
+            bookSearch.value = book;
+            suggestionBox.innerHTML = "";
+            suggestionBox.style.display = "none";
+            window.location.href = `class9.html?search=${encodeURIComponent(book)}`;
+          });
+
+          suggestionBox.appendChild(div);
         });
-
-        suggestionBox.appendChild(div);
-      });
+      } else {
+        suggestionBox.style.display = "none"; // hide if no match
+      }
+    } else {
+      suggestionBox.style.display = "none"; // hide when empty
     }
   });
 
   // Press Enter to search directly
   bookSearch.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       const searchTerm = bookSearch.value.trim();
       if (searchTerm !== "") {
+        suggestionBox.style.display = "none";
         window.location.href = `class9.html?search=${encodeURIComponent(searchTerm)}`;
       }
     }
@@ -173,9 +181,12 @@
 
   // Hide suggestions when clicked outside
   document.addEventListener("click", (e) => {
-    if (!bookSearch.contains(e.target)) suggestionBox.innerHTML = "";
+    if (!bookSearch.contains(e.target) && !suggestionBox.contains(e.target)) {
+      suggestionBox.style.display = "none";
+    }
   });
-  </script>
+</script>
+
   
 </body>
 </html>
