@@ -83,4 +83,44 @@ generateBtn.addEventListener("click", async () => {
     bookDescOutput.value = "⚠️ Error generating description.";
   }
 });
+
+// === AI Chat Assistant ===
+const chatInput = document.getElementById("chatInput");
+const chatSend = document.getElementById("chatSend");
+const chatOutput = document.getElementById("chatOutput");
+
+chatSend.addEventListener("click", async () => {
+  const question = chatInput.value.trim();
+  if (!question) return;
+
+  const API_KEY = "YOUR_OPENAI_API_KEY";
+
+  chatOutput.innerHTML += `<p><b>You:</b> ${question}</p>`;
+  chatInput.value = "";
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "user", content: question }
+        ],
+        max_tokens: 150
+      })
+    });
+
+    const data = await response.json();
+    const reply = data.choices[0].message.content.trim();
+    chatOutput.innerHTML += `<p><b>AI:</b> ${reply}</p>`;
+    chatOutput.scrollTop = chatOutput.scrollHeight;
+  } catch (err) {
+    chatOutput.innerHTML += `<p><b>AI:</b> ⚠️ Something went wrong!</p>`;
+  }
+});
+
 // new
