@@ -5,6 +5,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Class 9 NCERT Books</title>
   <link rel="stylesheet" href="catalog9.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fafafa;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #003366;
+      color: white;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Catalog section */
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      color: #003366;
+    }
+
+    .book-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .book-card img {
+      width: 150px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .book-card h3 {
+      margin: 15px 0 5px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .book-card p {
+      font-size: 14px;
+      color: #666;
+      margin: 4px 0;
+    }
+
+    .book-card button {
+      margin-top: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .book-card button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -12,75 +134,70 @@
     <div class="logo">📚 DAILY TIMES</div>
     <nav class="nav">
       <ul>
-        <li><a href="buyer.html">Home</a></li>
+        <li><a href="buyer_home.html">Home</a></li>
         <li><a href="About_us.html">About us</a></li>
         <li><a href="contact_us.html">Contact us</a></li>
-        <li><a href="resale_login.html">Login</a></li>
+        <li><a href="cart.html">🛒 Cart (<span id="cartCount">0</span>)</a></li>
       </ul>
     </nav>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for books...">
-    </div>
   </header>
 
-  <!-- Catalog -->
-  <section class="catalog">
-    <h2>📘 Class 9 NCERT Textbooks</h2>
-    <div class="cards">
+  <h2>📘 Class 9 NCERT Textbooks</h2>
 
-      <article class="card">
-        <img src="https://ncert.nic.in/textbook/pdf/iemh1cc.jpg" alt="Mathematics 101">
-        <h3>Mathematics</h3>
-        <p>Price: ₹200</p>
-        <a href="payment.html?item=Mathematics&price=200" class="buy-btn">Buy Now</a>
-      </article>
-
-      <article class="card">
-        <img src="https://m.media-amazon.com/images/I/71ap3TuYKRL._UF894,1000_QL80_.jpg" alt="Science">
-        <h3>Science</h3>
-        <p>Price: ₹250</p>
-        <a href="payment.html?item=Science&price=250" class="buy-btn">Buy Now</a>
-      </article>
-
-      <article class="card">
-        <img src="https://ncert.nic.in/textbook/pdf/ihss3cc.jpg" alt="History">
-        <h3>History – India & Contemporary World</h3>
-        <p>Price: ₹180</p>
-        <a href="payment.html?item=History – India & Contemporary World&price=180" class="buy-btn">Buy Now</a>
-      </article>
-
-      <article class="card">
-        <img src="https://ncert.nic.in/textbook/pdf/iess1cc.jpg" alt="Geography">
-        <h3>Geography – Contemporary India</h3>
-        <p>Price: ₹190</p>
-        <a href="payment.html?item=Geography –Contemporary India&price=190" class="buy-btn">Buy Now</a>
-      </article>
-
-      <article class="card">
-        <img src="https://m.media-amazon.com/images/I/917x2UlgoHL.jpg" alt="English Beehive">
-        <h3>English – Beehive</h3>
-        <p>Price: ₹160</p>
-        <a href="payment.html?item=English – Beehive&price=180" class="buy-btn">Buy Now</a>
-      </article>
-
-      <article class="card">
-        <img src="https://ncert.nic.in/textbook/pdf/iess4cc.jpg" alt="Political Science">
-        <h3>Civics – Democratic Politics</h3>
-        <p>Price: ₹170</p>
-        <a href="payment.html?item=Civics-Democratic Politics&price=170" class="buy-btn">Buy Now</a>
-      </article>
-
-    </div>
-  </section>
+  <!-- Book Catalog -->
+  <section class="book-list" id="bookList"></section>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-links">
+    <div>
       <a href="#">Privacy Policy</a> | 
       <a href="#">Terms of Service</a> | 
       <a href="contact_us.html">Contact</a>
     </div>
     <p>&copy; 2025 Daily Times. All Rights Reserved.</p>
   </footer>
+
+  <script>
+    const books = [
+      { title: "Mathematics NCERT Class 9", author: "NCERT", condition: "New", price: 200, image: "https://ncert.nic.in/textbook/pdf/iemh1cc.jpg" },
+      { title: "Science NCERT Class 9", author: "NCERT", condition: "New", price: 250, image: "https://m.media-amazon.com/images/I/71ap3TuYKRL._UF894,1000_QL80_.jpg" },
+      { title: "History – India & Contemporary World", author: "NCERT", condition: "New", price: 180, image: "https://ncert.nic.in/textbook/pdf/ihss3cc.jpg" },
+      { title: "Geography – Contemporary India", author: "NCERT", condition: "New", price: 190, image: "https://ncert.nic.in/textbook/pdf/iess1cc.jpg" },
+      { title: "English – Beehive", author: "NCERT", condition: "New", price: 160, image: "https://m.media-amazon.com/images/I/917x2UlgoHL.jpg" },
+      { title: "Civics – Democratic Politics", author: "NCERT", condition: "New", price: 170, image: "https://ncert.nic.in/textbook/pdf/iess4cc.jpg" }
+    ];
+
+    const container = document.getElementById("bookList");
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cartCount").textContent = cart.length;
+    }
+
+    function addToCart(book) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(book);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      alert(`${book.title} added to cart!`);
+    }
+
+    // Generate cards
+    books.forEach(book => {
+      const div = document.createElement("div");
+      div.className = "book-card";
+      div.innerHTML = `
+        <img src="${book.image}" alt="${book.title}">
+        <h3>${book.title}</h3>
+        <p><b>Author:</b> ${book.author}</p>
+        <p><b>Condition:</b> ${book.condition}</p>
+        <p><b>Price:</b> ₹${book.price}</p>
+        <button onclick='addToCart(${JSON.stringify(book)})'>Add to Cart</button>
+      `;
+      container.appendChild(div);
+    });
+
+    updateCartCount();
+  </script>
 </body>
 </html>
