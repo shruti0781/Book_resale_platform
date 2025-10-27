@@ -16,6 +16,7 @@
         <li><a href="About_us.html">About us</a></li>
         <li><a href="contact_us.html">Contact us</a></li>
         <li><a href="resale_login.html">Login</a></li>
+        <li><a href="cart.html">🛒 Cart (<span id="cartCount">0</span>)</a></li>
       </ul>
     </nav>
     <div class="search-bar">
@@ -124,6 +125,18 @@
   <script>
     const buyerName = localStorage.getItem("buyerName") || "Guest";
     document.getElementById("buyerName").textContent = buyerName;
+    <script>
+  const buyerName = localStorage.getItem("buyerName") || "Guest";
+  document.getElementById("buyerName").textContent = buyerName;
+
+  // Update cart count dynamically
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cartCount").textContent = cart.length;
+  }
+  updateCartCount();
+</script>
+
   </script>
 </body>
 </html>
