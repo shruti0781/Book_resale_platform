@@ -129,6 +129,28 @@
   </style>
 </head>
 <body>
+  <script>
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existingItem = cart.find(item => item.name === name);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      name: name,
+      price: price,
+      image: image,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${name} added to cart!`);
+}
+</script>
+
   <!-- Header -->
   <header class="header">
     <div class="logo">📚 DAILY TIMES</div>
@@ -192,7 +214,8 @@
         <p><b>Author:</b> ${book.author}</p>
         <p><b>Condition:</b> ${book.condition}</p>
         <p><b>Price:</b> ₹${book.price}</p>
-        <button onclick='addToCart(${JSON.stringify(book)})'>Add to Cart</button>
+       <button onclick="addToCart('Mathematics NCERT Class 9', 200, 'math.jpg')">Add to Cart</button>
+
       `;
       container.appendChild(div);
     });
