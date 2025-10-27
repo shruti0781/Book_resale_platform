@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cart</title>
+  <link rel="stylesheet" href="buyer.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { text-align: center; }
+    .cart-container { max-width: 600px; margin: auto; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ddd; }
+    .cart-item button { background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+    .cart-item button:hover { background-color: #e60000; }
+    .empty { text-align: center; color: #888; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🛒 My Cart</h1>
+  <div class="cart-container" id="cartContainer"></div>
+  <p id="totalCount"></p>
+
+  <script>
+    // Get cart items from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const cartContainer = document.getElementById("cartContainer");
+    const totalCount = document.getElementById("totalCount");
+
+    function renderCart() {
+      cartContainer.innerHTML = "";
+      if(cart.length === 0) {
+        cartContainer.innerHTML = '<p class="empty">Your cart is empty 😔</p>';
+        totalCount.textContent = "";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <span>${item}</span>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(div);
+      });
+
+      totalCount.textContent = `Total Items: ${cart.length}`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
