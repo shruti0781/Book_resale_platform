@@ -9,36 +9,32 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="logo">📚DAILY TIMES</div>
-    <nav class="nav">
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="About us.html">About us</a></li>
-        <li><a href="contact_us.html">Contact us</a></li>
-        <li><a href="resale_login.html">Login</a></li>
-        <li><a href="cart.html" class="cart-link">🛒 Cart (<span id="cart-count">0</span>)</a></li>
-      </ul>
+    <header class="header">
+  <div class="logo">📚 DAILY TIMES</div>
 
+  <!-- 🔍 Search bar in center -->
+  <div class="search-bar">
+    <input type="text" id="bookSearch" placeholder="Search for books..." />
+  </div>
 
+  <nav class="nav">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="About us.html">About us</a></li>
+      <li><a href="contact_us.html">Contact us</a></li>
+      <li><a href="resale_login.html">Login</a></li>
+      <li><a href="cart.html" class="cart-link">🛒 Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+
+  <div class="toggle-container">
+    <span class="toggle-label">🌙 Dark Mode</span>
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
 </header>
-   <section class="search-section">
-  <h2>Search for Books</h2>
-  <input type="text" id="bookSearch" placeholder="Enter book title..." />
-  <button class="find">Find Book</button>
-</section>
-
-    </nav>
-
-    <div class="toggle-container">
-      <span class="toggle-label">🌙 Dark Mode</span>
-      <label class="switch">
-        <input type="checkbox" id="darkModeToggle">
-        <span class="slider"></span>
-      </label>
-    </div>
-  </header>
-
   <section class="hero">
     <img src="https://shoppiko.com/image/BUSINESS/new-images/Book.jpg" alt="Newspaper Hero Image">
     <div class="hero-text">
@@ -118,6 +114,68 @@
         localStorage.setItem("dark-mode", "disabled");
       }
     });
+    //   const bookSearch = document.getElementById("bookSearch");
+
+  // Example book data (you can replace this with real book names)
+  // 📚 Book search system
+  const bookSearch = document.getElementById("bookSearch");
+
+  // Example book list (add actual titles from class9.html)
+  const books = [
+    "Mathematics Class 9",
+    "Science Class 9",
+    "English Literature",
+    "History Textbook",
+    "Geography Atlas",
+    "Hindi Grammar",
+    "Computer Applications"
+  ];
+
+  // Create suggestion box
+  const suggestionBox = document.createElement("div");
+  suggestionBox.classList.add("suggestions");
+  bookSearch.parentNode.appendChild(suggestionBox);
+
+  // Show suggestions when typing
+  bookSearch.addEventListener("input", function() {
+    const input = this.value.toLowerCase();
+    suggestionBox.innerHTML = "";
+
+    if (input) {
+      const filtered = books.filter(book => book.toLowerCase().includes(input));
+
+      filtered.forEach(book => {
+        const div = document.createElement("div");
+        div.textContent = book;
+        div.classList.add("suggestion-item");
+
+        // When user clicks a suggestion
+        div.addEventListener("click", () => {
+          bookSearch.value = book;
+          suggestionBox.innerHTML = "";
+          window.location.href = `class9.html?search=${encodeURIComponent(book)}`;
+        });
+
+        suggestionBox.appendChild(div);
+      });
+    }
+  });
+
+  // Press Enter to search directly
+  bookSearch.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      const searchTerm = bookSearch.value.trim();
+      if (searchTerm !== "") {
+        window.location.href = `class9.html?search=${encodeURIComponent(searchTerm)}`;
+      }
+    }
+  });
+
+  // Hide suggestions when clicked outside
+  document.addEventListener("click", (e) => {
+    if (!bookSearch.contains(e.target)) suggestionBox.innerHTML = "";
+  });
   </script>
+  
 </body>
 </html>
