@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | Daily Times</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #f4f6f9; margin: 0; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      background: white; padding: 15px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header h2 { margin: 0; }
+    nav a { margin-left: 20px; text-decoration: none; color: #222; font-weight: bold; }
+    .cart-link {
+      background: #4b0082; color: white; padding: 6px 12px;
+      border-radius: 6px; text-decoration: none;
+    }
+    .cart-container {
+      max-width: 800px; margin: 40px auto; background: #fff; padding: 20px;
+      border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .cart-item {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee;
+    }
+    .cart-item img { width: 80px; border-radius: 8px; }
+    .cart-item h4 { margin: 0; flex: 1; padding-left: 10px; }
+    .cart-item button {
+      background: red; color: white; border: none; padding: 6px 10px;
+      border-radius: 5px; cursor: pointer;
+    }
+    .cart-footer { text-align: center; margin-top: 20px; }
+    .checkout-btn {
+      background: #4b0082; color: white; border: none; padding: 10px 20px;
+      border-radius: 5px; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>🛒 Your Cart</h2>
+    <nav>
+      <a href="class9.html">🏠 Home</a>
+      <a href="cart.html" class="cart-link">🛒 Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <div class="cart-container" id="cart-container"></div>
+  <div class="cart-footer">
+    <h3 id="total"></h3>
+    <button class="checkout-btn" onclick="checkout()">Checkout</button>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function updateCartCount() {
+      document.getElementById("cart-count").textContent = cart.length;
+    }
+
+    function displayCart() {
+      const container = document.getElementById("cart-container");
+      container.innerHTML = "";
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Your cart is empty 🛒</p>";
+        document.getElementById("total").textContent = "";
+        return;
+      }
+
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        container.innerHTML += `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.title}">
+            <h4>${item.title}</h4>
+            <p>₹${item.price}</p>
+            <button onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+      });
+      document.getElementById("total").textContent = "Total: ₹" + total;
+      updateCartCount();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Cart is empty!");
+        return;
+      }
+      alert("🎉 Order placed successfully!");
+      localStorage.removeItem("cart");
+      cart = [];
+      displayCart();
+    }
+
+    displayCart();
+  </script>
+</body>
+</html>
+
