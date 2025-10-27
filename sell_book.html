@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="sell_book.css" />
   <link rel="icon" href="https://uyc.thecenterforsalesstrategy.com/hubfs/21%20Books%20on%20Our%20Shelves%20for%20Personal%20and%20Professional%20Development.png" type="image/x-icon">
 </head>
-
 <body>
-  <header>
+ <header>
     <div class="logo">📚 <strong>DAILY TIMES</strong></div>
     <nav>
       <a href="index.html">Home</a>
@@ -21,8 +20,9 @@
       <input type="text" placeholder="Search for books...">
     </div>
   </header>
-
-  <form>
+<br>
+<br>
+  <form id="bookForm">
     <div>
       <label for="title">Book Title</label>
       <input type="text" id="title" name="title" placeholder="Enter book title" required>
@@ -75,6 +75,7 @@
     <button type="submit">📤 Submit Your Listing</button>
   </form>
 
+  <div id="loading" class="loading">Fetching book details... ⏳</div>
 
   <footer>
     <a href="#">Privacy Policy</a> |
@@ -82,5 +83,59 @@
     <a href="#">Contact</a>
     <p>&copy; 2025 Daily Times. All Rights Reserved.</p>
   </footer>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+const fileInput = document.getElementById("image");
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const descriptionInput = document.getElementById("description");
+const loading = document.getElementById("loading");
+
+loading.style.display = "none";
+
+fileInput.addEventListener("change", function() {
+  const file = this.files[0];
+  if (!file) return;
+
+  const imageUrl = URL.createObjectURL(file);
+  loading.style.display = "block";
+  loading.textContent = "📖 Scanning book cover for text... please wait.";
+
+  Tesseract.recognize(imageUrl, 'eng', { logger: info => console.log(info) })
+  .then(({ data: { text } }) => {
+    // Clean and split text into lines
+    const lines = text
+      .split("\n")
+      .map(line => line.trim())
+      .filter(line => line.length > 0 && !line.match(/ISBN|edition|press|copyright|book|cover/i));
+
+    console.log("Extracted lines:", lines);
+
+    let title = "Unknown Title";
+    let author = "Unknown Author";
+
+    // Try to assign first two lines sensibly
+    if (lines.length > 0) title = lines[0];
+    if (lines.length > 1) author = lines[1];
+
+    // Fill fields
+    titleInput.value = title;
+    authorInput.value = author;
+
+    // Auto-fill description
+    descriptionInput.value = `“${title}” by ${author} is a fascinating read that deserves a place on every bookshelf. Dive into its pages to explore a unique story and enriching ideas.`;
+
+    loading.textContent = "✅ Text recognized successfully!";
+    setTimeout(() => (loading.style.display = "none"), 2000);
+  })
+  .catch(err => {
+    console.error(err);
+    loading.textContent = "❌ Could not read text from image.";
+    setTimeout(() => (loading.style.display = "none"), 3000);
+  });
+});
+</script>
 </body>
 </html>
